@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         else{
-            Toast.makeText(this, "Fragment B not found!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Fragment A not found!", Toast.LENGTH_SHORT).show();
         }
     }
 

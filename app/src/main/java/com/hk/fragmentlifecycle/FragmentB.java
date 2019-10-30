@@ -37,7 +37,7 @@ public class FragmentB extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG,"onCreateView");
-        View view = inflater.inflate(R.layout.fragment_b,container);
+        View view = inflater.inflate(R.layout.fragment_b,container,false);
 
         return view;
     }

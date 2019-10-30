@@ -37,7 +37,7 @@ private final String TAG = FragmentA.class.getSimpleName();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG,"onCreateView");
-        View view = inflater.inflate(R.layout.fragment_a,container);
+        View view = inflater.inflate(R.layout.fragment_a,container,false);
 
         return view;
     }
@@ -89,4 +89,6 @@ private final String TAG = FragmentA.class.getSimpleName();
         super.onDetach();
         Log.i(TAG,"onDetach");
     }
+
+
 }
