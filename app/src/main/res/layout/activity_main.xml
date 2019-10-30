@@ -65,6 +65,39 @@
             android:textColor="#000"
             android:onClick="replacewithB"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attach 'A'"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="attachA"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dettach 'A'"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="dettachA"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show A"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="showA"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hide A"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="hideA"/>
+    </LinearLayout>
 </LinearLayout>
 <FrameLayout
     android:id="@+id/container"
