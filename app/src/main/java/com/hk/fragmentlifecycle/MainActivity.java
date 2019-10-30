@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         //load the fragment using FragmentManager
         manager = getSupportFragmentManager();
 
-        // Toast.makeText(this, "for exploring override method go logcat and type MainActivity|FragmentA", Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, "for exploring override method go logcat and type Fragment, Toast.LENGTH_LONG).show();
     }
 
 
