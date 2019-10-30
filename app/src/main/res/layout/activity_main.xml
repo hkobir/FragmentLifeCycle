@@ -46,6 +46,25 @@
             android:onClick="removeB"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="replace by 'A'"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="replacewithA"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="replace by 'B'"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="replacewithB"/>
+    </LinearLayout>
 </LinearLayout>
 <FrameLayout
     android:id="@+id/container"
