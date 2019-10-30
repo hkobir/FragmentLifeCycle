@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
-<!--load blankFragment-->
-    <fragment
-    android:id="@+id/fragment"
-    android:name="com.hk.fragmentlifecycle.BlankFragment"
-    android:layout_width="wrap_content"
+<LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_centerInParent="true" />
-</RelativeLayout>
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="addA"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="addA"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="removeA"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="removeA"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="addB"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="addB"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="removeB"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:onClick="removeB"/>
+
+    </LinearLayout>
+</LinearLayout>
+<FrameLayout
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDF4C5">
+
+</FrameLayout>
+</LinearLayout>

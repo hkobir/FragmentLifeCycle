@@ -1,65 +1,69 @@
 package com.hk.fragmentlifecycle;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.getSimpleName();
+    FragmentManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
+
         //load the fragment using FragmentManager
-        BlankFragment fragment = new BlankFragment();
-        FragmentManager manager = getSupportFragmentManager();
+        manager = getSupportFragmentManager();
+
+       // Toast.makeText(this, "for exploring override method go logcat and type MainActivity|FragmentA", Toast.LENGTH_LONG).show();
+    }
+
+
+    public void addA(View view) {
+        FragmentA fragmentA = new FragmentA();
         FragmentTransaction transaction =manager.beginTransaction();
-        transaction.add(R.id.container,fragment);
+        transaction.add(R.id.container,fragmentA,"fragA");
         transaction.commit();
-        */
-        Toast.makeText(this, "for exploring override method go logcat and type MainActivity|BlankFragment", Toast.LENGTH_LONG).show();
+
+    }
+    public void removeA(View view) {
+
+        FragmentA fragmentA = (FragmentA) manager.findFragmentByTag("fragA");
+        FragmentTransaction transaction = manager.beginTransaction();
+        if(fragmentA!=null){
+            transaction.remove(fragmentA);
+            transaction.commit();
+
+        }
+        else{
+            Toast.makeText(this, "Fragment B not found!", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    @Override
-    public void onAttachFragment(Fragment fragment) {           //attach fragment into activity automatically
-        super.onAttachFragment(fragment);
-        Log.i(TAG, "onAttachFragment");
+    public void removeB(View view) {
+        FragmentB fragmentB = (FragmentB) manager.findFragmentByTag("fragB");
+        FragmentTransaction transaction =manager.beginTransaction();
+        if(fragmentB!=null){
+            transaction.remove(fragmentB);
+            transaction.commit();
+
+        }
+        else{
+            Toast.makeText(this, "Fragment B not found!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        Log.i(TAG, "onStart");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        Log.i(TAG, "onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Log.i(TAG, "onStop");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy");
+    public void addB(View view) {
+        FragmentB fragmentB = new FragmentB();
+        FragmentTransaction transaction =manager.beginTransaction();
+        transaction.add(R.id.container,fragmentB,"fragB");
+        transaction.commit();
     }
 }

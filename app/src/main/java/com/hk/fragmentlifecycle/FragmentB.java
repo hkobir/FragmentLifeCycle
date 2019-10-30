@@ -11,15 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class BlankFragment extends Fragment {
-private final String TAG = BlankFragment.class.getSimpleName();
+public class FragmentB extends Fragment {
+    private final String TAG = FragmentB.class.getSimpleName();
 
-    public BlankFragment() {
-        // Required empty public constructor
+    public FragmentB() {
+
     }
+
+
+
 
 
     @Override
@@ -37,7 +37,7 @@ private final String TAG = BlankFragment.class.getSimpleName();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG,"onCreateView");
-        View view = inflater.inflate(R.layout.fragment_blank,container);
+        View view = inflater.inflate(R.layout.fragment_b,container);
 
         return view;
     }
@@ -89,4 +89,5 @@ private final String TAG = BlankFragment.class.getSimpleName();
         super.onDetach();
         Log.i(TAG,"onDetach");
     }
+
 }
