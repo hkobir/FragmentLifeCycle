@@ -45,7 +45,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Fragment A not found!", Toast.LENGTH_SHORT).show();
         }
     }
-
+    public void addB(View view) {
+        FragmentB fragmentB = new FragmentB();
+        FragmentTransaction transaction =manager.beginTransaction();
+        transaction.add(R.id.container,fragmentB,"fragB");
+        transaction.commit();
+    }
     public void removeB(View view) {
         FragmentB fragmentB = (FragmentB) manager.findFragmentByTag("fragB");
         FragmentTransaction transaction =manager.beginTransaction();
@@ -60,10 +65,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void addB(View view) {
-        FragmentB fragmentB = new FragmentB();
-        FragmentTransaction transaction =manager.beginTransaction();
-        transaction.add(R.id.container,fragmentB,"fragB");
-        transaction.commit();
-    }
+
 }
