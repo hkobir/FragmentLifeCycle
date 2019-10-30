@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.getSimpleName();
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.add(R.id.container,fragment);
         transaction.commit();
         */
+        Toast.makeText(this, "for exploring override method go logcat and type MainActivity|BlankFragment", Toast.LENGTH_LONG).show();
     }
 
     @Override
