@@ -64,6 +64,11 @@
             android:textAllCaps="false"
             android:textColor="#000"
             android:onClick="replacewithB"/>
+        <TextView
+            android:id="@+id/mainResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="resultview in Main Activity"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

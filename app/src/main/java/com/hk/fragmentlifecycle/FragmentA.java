@@ -3,6 +3,7 @@ package com.hk.fragmentlifecycle;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -43,10 +44,19 @@ private final String TAG = FragmentA.class.getSimpleName();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG,"onCreateView");
+
+
         View view = inflater.inflate(R.layout.fragment_a,container,false);
         login = view.findViewById(R.id.loginBtn);
         input = view.findViewById(R.id.nameET);
         res = view.findViewById(R.id.resultTV);
+
+        //when restore the value from saveInstance State
+        if(savedInstanceState!=null){
+            login.setText(savedInstanceState.getString("btnTextKey",""));
+            res.setText(savedInstanceState.getString("textViewTextKey",""));
+        }
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +65,7 @@ private final String TAG = FragmentA.class.getSimpleName();
             }
         });
         return view;
+
     }
 
     @Override
@@ -85,6 +96,16 @@ private final String TAG = FragmentA.class.getSimpleName();
     public void onPause() {
         super.onPause();
         Log.i(TAG,"onPause");
+    }
+
+    @Override                                                       //store value before destroy
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i(TAG,"onSaveInstanceState");
+
+        outState.putString("btnTextKey",login.getText().toString());
+        outState.putString("EditTextKey",input.getText().toString());
+        outState.putString("textViewTextKey",res.getText().toString());
     }
 
     @Override

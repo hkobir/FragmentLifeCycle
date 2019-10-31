@@ -6,11 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
     private final String TAG = MainActivity.class.getSimpleName();
     FragmentManager manager;
+    private TextView resultView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
         //load the fragment using FragmentManager
         manager = getSupportFragmentManager();
+        resultView = findViewById(R.id.mainResult);
 
         //add backStack for implement back button
         manager.addOnBackStackChangedListener(this);
