@@ -8,7 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
     private final String TAG = MainActivity.class.getSimpleName();
     FragmentManager manager;
 
@@ -21,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         //load the fragment using FragmentManager
         manager = getSupportFragmentManager();
 
+        //add backStack for implement back button
+        manager.addOnBackStackChangedListener(this);
+
         // Toast.makeText(this, "for exploring override method go logcat and type Fragment, Toast.LENGTH_LONG).show();
     }
 
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentA fragmentA = new FragmentA();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.container, fragmentA, "fragA");
+        transaction.addToBackStack("fragA");
         transaction.commit();
 
     }
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         if (fragmentA != null) {
             transaction.remove(fragmentA);
+            transaction.addToBackStack("fragA");
             transaction.commit();
 
         } else {
@@ -49,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentB fragmentB = new FragmentB();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.add(R.id.container, fragmentB, "fragB");
+        transaction.addToBackStack("fragB");
         transaction.commit();
     }
 
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         if (fragmentB != null) {
             transaction.remove(fragmentB);
+            transaction.addToBackStack("fragB");
             transaction.commit();
 
         } else {
@@ -70,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentA fragmentA = new FragmentA();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.container, fragmentA, "fragA");
+        transaction.addToBackStack("fragA");
         transaction.commit();
     }
 
@@ -77,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentB fragmentB = new FragmentB();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.container, fragmentB, "fragB");
+        transaction.addToBackStack("fragB");
         transaction.commit();
     }
 
@@ -85,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         if (fragmentA != null) {
             transaction.attach(fragmentA);
+            transaction.addToBackStack("fragA");
             transaction.commit();
 
         } else {
@@ -97,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         if (fragmentA != null) {
             transaction.detach(fragmentA);
+            transaction.addToBackStack("fragA");
             transaction.commit();
 
         } else {
@@ -109,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         if (fragmentA != null) {
             transaction.show(fragmentA);
+            transaction.addToBackStack("fragA");
             transaction.commit();
 
         } else {
@@ -121,10 +133,28 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         if (fragmentA != null) {
             transaction.hide(fragmentA);
+            transaction.addToBackStack("fragA");
             transaction.commit();
 
         } else {
             Toast.makeText(this, "Fragment A not found!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onBackStackChanged() {
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(manager.getBackStackEntryCount()>0){                //if has any state in stack then back to load it
+            manager.popBackStack();
+        }
+        else{
+            super.onBackPressed();
         }
     }
 }
