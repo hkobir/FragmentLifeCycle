@@ -9,9 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class FragmentB extends Fragment {
+    private Button send;
+    private EditText msg;
     private final String TAG = FragmentB.class.getSimpleName();
 
     public FragmentB() {
@@ -38,8 +43,24 @@ public class FragmentB extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG,"onCreateView");
         View view = inflater.inflate(R.layout.fragment_b,container,false);
+        msg = view.findViewById(R.id.messageET);
+        send = view.findViewById(R.id.sendBtn);
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String m = msg.getText().toString();
+                sendMessage(m);
+            }
+        });
 
         return view;
+    }
+
+    private void sendMessage(String m) {    //send message to main activity bas on listner
+        MyListener listener = (MyListener) getActivity();
+        listener.showMessage(m);
+
     }
 
     @Override

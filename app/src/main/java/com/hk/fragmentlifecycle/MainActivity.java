@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
+public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener,MyListener{
     private final String TAG = MainActivity.class.getSimpleName();
     FragmentManager manager;
     private TextView resultView;
@@ -159,5 +159,10 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         else{
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void showMessage(String m) {
+        resultView.setText(m);
     }
 }
