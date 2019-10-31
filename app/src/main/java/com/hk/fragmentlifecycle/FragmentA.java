@@ -9,12 +9,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FragmentA extends Fragment {
+    private Button login;
+    private TextView res;
+    private EditText input;
 private final String TAG = FragmentA.class.getSimpleName();
 
     public FragmentA() {
@@ -38,7 +44,16 @@ private final String TAG = FragmentA.class.getSimpleName();
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.i(TAG,"onCreateView");
         View view = inflater.inflate(R.layout.fragment_a,container,false);
-
+        login = view.findViewById(R.id.loginBtn);
+        input = view.findViewById(R.id.nameET);
+        res = view.findViewById(R.id.resultTV);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login.setText("Logout");
+                res.setText(input.getText().toString());
+            }
+        });
         return view;
     }
 
